@@ -73,13 +73,14 @@ Esc	Выход из игры в меню (результат сохраняет�
 Стены уровня хранятся как список pygame.Rect (по одному на символ #).
 Коллизия проверяется по окружности:
 
-python
+```python
 def check_circle(self, cx, cy, rect):
     closest_x = max(rect.left, min(cx, rect.right))
     closest_y = max(rect.top, min(cy, rect.bottom))
     dx = cx - closest_x
     dy = cy - closest_y
     return dx * dx + dy * dy <= self.radius * self.radius
+```
 Движение разбито на две попытки (try_move по X, затем по Y) — так танк
 «скользит» вдоль стены, а не застревает намертво. При столкновении
 соответствующая компонента скорости обнуляется.
