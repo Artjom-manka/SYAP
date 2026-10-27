@@ -234,3 +234,9 @@ validate_level(config) — проверки:
 
 Такой подход покрывает все требования методички: обработка
 FileNotFoundError, JSONDecodeError, валидация, fallback.
+
+---
+
+## Скриншоты
+
+### Стартовый экран
