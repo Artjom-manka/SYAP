@@ -159,7 +159,7 @@ DEFAULT_LEVEL = {
 
 game_flight.log — лог событий
 Текстовый файл, пишется модулем logging. Формат строки:
-
+```
 text
 2026-10-27 21:01:31 | INFO | Уровень загружен из levelPlayer.json
 2026-10-27 21:01:31 | INFO | Игра запущена
@@ -167,7 +167,7 @@ text
 2026-10-27 21:02:14 | INFO | Результат сохранён: сессия 1, Прервано
 2026-10-27 21:02:14 | INFO | Выход в меню по ESC
 Формат задаётся в file_manager.py:
-
+```
 ```python
 logging.basicConfig(
     filename=LOG_FILE,
