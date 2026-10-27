@@ -91,7 +91,7 @@ def check_circle(self, cx, cy, rect):
 levelPlayer.json — конфигурация уровня
 Внешний JSON-файл со структурой лабиринта. Загружается при старте игры
 через file_manager.load_level().
-
+```json
 {
   "name": "Arena 1",
   "tile_size": 40,
@@ -119,6 +119,7 @@ levelPlayer.json — конфигурация уровня
   },
   "spawns": [ [ 1, 1 ] ]
 }
+```
 Поля:
 
 Поле	Тип	Назначение
@@ -131,7 +132,7 @@ spawns	list	Список координат спавна (справочно)
 валидацию и будет загружен DEFAULT_LEVEL.
 
 levelDefault.py — уровень по умолчанию
-python
+```python
 DEFAULT_LEVEL = {
     "name": "Default",
     "tile_size": 40,
@@ -144,6 +145,7 @@ DEFAULT_LEVEL = {
     ],
     "player": {"angle": 0},
 }
+```
 Используется, если levelPlayer.json:
 
 отсутствует (FileNotFoundError);
@@ -164,13 +166,14 @@ text
 2026-10-27 21:02:14 | INFO | Выход в меню по ESC
 Формат задаётся в file_manager.py:
 
-python
+```python
 logging.basicConfig(
     filename=LOG_FILE,
     level=logging.INFO,
     format="%(asctime)s | %(levelname)s | %(message)s",
     datefmt="%Y-%m-%d %H:%M:%S",
 )
+```
 Логируются:
 
 загрузка уровня / fallback на DEFAULT_LEVEL;
@@ -199,25 +202,20 @@ text
 кодировка cp1251 — чтобы Excel открывал русские заголовки без
 «кракозябр» (родная кодировка русской Windows);
 
-разделитель ; — русская локаль Excel ожидает точку с запятой;
-
 при первом запуске (файл отсутствует или пуст) сначала пишется
 строка заголовков;
-
-имя игрока заменено на номер сессии (1, 2, 3, …) — пользователю
-не нужно вводить данные в консоль.
 
 Логика загрузки уровня
 Порядок вызовов в main.py:
 
-python
+```python
 config = file_manager.load_level()
 grid = config["grid"]
 walls = Labirint.build_walls(grid)
 start_x, start_y = Labirint.get_start_position(grid)
 player = Tank.Tank(start_x, start_y, 0.07, 1.5)
 Внутри file_manager.load_level():
-
+```
 load_config() — пытается открыть levelPlayer.json.
 
 FileNotFoundError → печать в консоль + запись в лог + return {}.
