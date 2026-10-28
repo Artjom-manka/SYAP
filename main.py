@@ -3,7 +3,7 @@ import Tank
 import Labirint
 import Button
 import SoundGame
-
+import file_manager
 
 pygame.init()
 
@@ -14,22 +14,20 @@ BG = (20, 20, 25)
 screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
 pygame.display.set_caption('Inertial Tanks')
 
-#load image
-start_img=pygame.image.load(r'C:\Отчеты\СЯП\PLAY.png')
-exit_img=pygame.image.load(r'C:\Отчеты\СЯП\EXIT.png')
+start_img = pygame.image.load(r'C:\Отчеты\СЯП\PLAY.png')
+exit_img = pygame.image.load(r'C:\Отчеты\СЯП\EXIT.png')
 
-#crate buttons
-start_button =Button.Button(SCREEN_WIDTH//2-130,SCREEN_HEIGHT//2-150,start_img,1)
-exit_button =Button.Button(SCREEN_WIDTH//2-130,SCREEN_HEIGHT//2-50,exit_img,1)
+start_button = Button.Button(SCREEN_WIDTH // 2 - 130, SCREEN_HEIGHT // 2 - 150, start_img, 1)
+exit_button = Button.Button(SCREEN_WIDTH // 2 - 130, SCREEN_HEIGHT // 2 - 50, exit_img, 1)
 
-#FLAG
 moving_left = False
 moving_right = False
 moving_up = False
 moving_down = False
-start_game =False
+start_game = False
 
-grid = Labirint.load_map("arena.txt")
+config = file_manager.load_level()
+grid = config["grid"]
 
 walls = Labirint.build_walls(grid)
 start_x, start_y = Labirint.get_start_position(grid)
@@ -40,11 +38,21 @@ SoundGame.init_sound()
 clock = pygame.time.Clock()
 FPS = 60
 
+session_start_ticks = 0
+session_saved = False
+
+file_manager.log_event("Игра запущена")
+
 run = True
 while run:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
+            if start_game and not session_saved:
+                elapsed = (pygame.time.get_ticks() - session_start_ticks) / 1000.0
+                file_manager.save_session(elapsed, 0, "Выход")
+                session_saved = True
             run = False
+
         elif event.type == pygame.KEYDOWN:
             if event.key == pygame.K_a:
                 moving_left = True
@@ -55,7 +63,14 @@ while run:
             if event.key == pygame.K_s:
                 moving_down = True
             if event.key == pygame.K_ESCAPE:
+                if start_game and not session_saved:
+                    elapsed = (pygame.time.get_ticks() - session_start_ticks) / 1000.0
+                    file_manager.save_session(elapsed, 0, "Прервано")
+                    session_saved = True
+                    file_manager.log_event("Выход в меню по ESC")
                 start_game = False
+                session_saved = False
+
         elif event.type == pygame.KEYUP:
             if event.key == pygame.K_a:
                 moving_left = False
@@ -70,10 +85,13 @@ while run:
         screen.fill(BG)
         if start_button.draw(screen):
             start_game = True
+            session_start_ticks = pygame.time.get_ticks()
+            session_saved = False
+            file_manager.log_event("Нажата кнопка START")
         if exit_button.draw(screen):
+            file_manager.log_event("Нажата кнопка EXIT")
             run = False
     else:
-
         old_x = player.x
         old_y = player.y
         player.move(moving_left, moving_right, moving_up, moving_down, walls)
@@ -90,3 +108,6 @@ while run:
 
     pygame.display.flip()
     clock.tick(FPS)
+
+file_manager.log_event("Игра завершена")
+pygame.quit()

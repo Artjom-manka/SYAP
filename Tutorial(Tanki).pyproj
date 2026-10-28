@@ -22,10 +22,15 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Button.py" />
+    <Compile Include="file_manager.py" />
     <Compile Include="Labirint.py" />
+    <Compile Include="levelDefault.py" />
     <Compile Include="main.py" />
     <Compile Include="SoundGame.py" />
     <Compile Include="Tank.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="levelPlayer.json" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
   <!-- Uncomment the CoreCompile target to enable the Build command in
