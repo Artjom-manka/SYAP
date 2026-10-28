@@ -207,16 +207,6 @@ start_x, start_y = Labirint.get_start_position(grid)
 player = Tank.Tank(start_x, start_y, 0.07, 1.5)
 Внутри file_manager.load_level():
 ```
-load_config() — пытается открыть levelPlayer.json.
-
-FileNotFoundError → печать в консоль + запись в лог + return {}.
-
-json.JSONDecodeError → печать + запись в лог + return {}.
-
-Успех → log_event("Уровень загружен...") + return data.
-
-validate_level(config) — проверки:
-
 конфиг не пустой;
 
 есть поле grid и оно не пустое;
@@ -228,9 +218,6 @@ validate_level(config) — проверки:
 Если валидация провалилась — возвращается DEFAULT_LEVEL.
 
 Иначе — валидный конфиг.
-
-Такой подход покрывает все требования методички: обработка
-FileNotFoundError, JSONDecodeError, валидация, fallback.
 
 ---
 
