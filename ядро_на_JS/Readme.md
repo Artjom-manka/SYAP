@@ -33,30 +33,44 @@ inertial_tanks_js/ # ядро — только логика, без интерф
 ```
 
 # самопроверка (35 проверок: геометрия, физика, FSM, коллизии, JSON, цикл)
-node selftest.js
-Про интерфейс. В этой версии только ядро — без отрисовки и ввода:
-его можно проверить целиком в консоли, без браузера.
+=== Results ===
 
-Ключевые отличия от Python-версии (ЛР 1–2)
-Аспект	Python (ЛР 1–2)	JavaScript (ЛР 4)
-Модули	import Tank, import Labirint	ES-модули import … from './js/x.js'
-Прямоугольники	pygame.Rect	собственный класс Rect (move/colliderect/collidepoint)
-FSM статуса	session_saved + ветвления	switch/явное состояние status
-Физика	thrust, friction, max_speed	те же константы в constants.js
-Данные уровня	levelPlayer.json + file_manager.validate_level	Level.fromJSON() с той же валидацией
-Хранение сессий	запись в CSV	SessionStore в памяти (ядро чистое)
-
-Отрисовка	цикл в main.py	не реализована — ядро от неё не зависит
-Возможности ядра
-☑ Классы Tank, Level, Game, SessionStore — независимые, каждый в своём модуле
-☑ geometry.distance(x1, y1, x2, y2) — расстояние по теореме Пифагора (Math.hypot)
-☑ geometry.circleIntersectsRect — коллизия «круг vs прямоугольник» по ближайшей точке
-☑ Rect.move() возвращает новый объект — оригинал не мутируется
-☑ Раздельное движение по осям — скольжение вдоль стен, защита от застревания
-☑ Tank.clampToBounds — зажатие в границах окна (аналог main.py)
-☑ FSM статуса игры: INTERRUPTED / EXIT / WIN / TIME_UP + блокировка после финала
-☑ Загрузка уровня из JSON с валидацией (try/catch + проверка полей)
-☑ SessionStore — валидация записи, лидерборд, персональная статистика
+OK   Rect geometry
+OK   Rect move returns new object
+OK   Rect colliderect
+OK   Rect collidepoint
+OK   distance 3-4-5
+OK   closestPointOnRect inside
+OK   closestPointOnRect outside
+OK   circleIntersectsRect touch
+OK   circleIntersectsRect no hit
+OK   Level validate ok
+OK   Level validate empty
+OK   Level validate two spawns
+OK   Level validate bad row length
+OK   Level fromJSON ok
+OK   Level fromJSON broken
+OK   Level buildWalls count
+OK   Level getStartPosition
+OK   Tank initial state
+OK   Tank thrust forward
+OK   Tank rotation
+OK   Tank friction reduces speed
+OK   Tank maxSpeed cap
+OK   Tank collision rollback
+OK   Tank free move
+OK   Tank clampToBounds left edge
+OK   Game start from level
+OK   Game step accumulates time
+OK   Game TIME_UP by timeout
+OK   Game no step after finish
+OK   Game toSessionRecord rounding
+OK   SessionStore add valid
+OK   SessionStore add empty name rejected
+OK   SessionStore add bad status rejected
+OK   SessionStore leaderboard sorting
+OK   SessionStore personalStats
+OK   ALLOWED_STATUSES length
 
 Формулы
 Движение и инерция (порт Tank.move):
