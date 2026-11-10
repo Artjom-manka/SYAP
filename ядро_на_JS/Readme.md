@@ -34,7 +34,7 @@ inertial_tanks_js/ # ядро — только логика, без интерф
 
 # самопроверка (35 проверок: геометрия, физика, FSM, коллизии, JSON, цикл)
 === Results ===
-
+```
 OK   Rect geometry
 OK   Rect move returns new object
 OK   Rect colliderect
@@ -71,7 +71,7 @@ OK   SessionStore add bad status rejected
 OK   SessionStore leaderboard sorting
 OK   SessionStore personalStats
 OK   ALLOWED_STATUSES length
-
+```
 Формулы
 Движение и инерция (порт Tank.move):
 ```
