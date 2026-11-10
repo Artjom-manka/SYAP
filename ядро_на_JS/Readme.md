@@ -45,6 +45,7 @@ FSM статуса	session_saved + ветвления	switch/явное сост
 Физика	thrust, friction, max_speed	те же константы в constants.js
 Данные уровня	levelPlayer.json + file_manager.validate_level	Level.fromJSON() с той же валидацией
 Хранение сессий	запись в CSV	SessionStore в памяти (ядро чистое)
+
 Отрисовка	цикл в main.py	не реализована — ядро от неё не зависит
 Возможности ядра
 ☑ Классы Tank, Level, Game, SessionStore — независимые, каждый в своём модуле
