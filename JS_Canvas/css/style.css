@@ -1,0 +1,128 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: #14141a;
+    color: #e8e8ee;
+    font-family: "Segoe UI", system-ui, sans-serif;
+    min-height: 100vh;
+}
+
+.layout {
+    display: grid;
+    grid-template-columns: 800px 1fr;
+    gap: 16px;
+    padding: 16px;
+    min-height: 100vh;
+}
+
+.stage {
+    background: #0a0a0e;
+    border-radius: 8px;
+    overflow: hidden;
+    display: flex;
+    align-items: flex-start;
+}
+
+canvas {
+    display: block;
+    border-radius: 8px;
+}
+
+.panel {
+    background: #1e1e26;
+    border-radius: 8px;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    max-width: 360px;
+}
+
+    .panel h1 {
+        font-size: 20px;
+        font-weight: 600;
+        color: #5fc4ff;
+    }
+
+    .panel h2 {
+        font-size: 14px;
+        font-weight: 500;
+        color: #9a9aad;
+        margin-bottom: 8px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+
+.hud div {
+    display: flex;
+    justify-content: space-between;
+    padding: 4px 0;
+    border-bottom: 1px solid #2a2a34;
+    font-size: 14px;
+}
+
+.hud span {
+    color: #9a9aad;
+}
+
+.hud b {
+    color: #e8e8ee;
+    font-weight: 600;
+}
+
+.controls ul {
+    list-style: none;
+    font-size: 13px;
+}
+
+.controls li {
+    padding: 4px 0;
+    color: #c0c0cc;
+}
+
+kbd {
+    background: #2a2a34;
+    border-radius: 3px;
+    padding: 1px 6px;
+    font-family: monospace;
+    font-size: 12px;
+}
+
+.scenarios {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+    .scenarios button {
+        background: #2a2a34;
+        color: #e8e8ee;
+        border: 1px solid #3a3a46;
+        border-radius: 4px;
+        padding: 8px 12px;
+        cursor: pointer;
+        font-size: 13px;
+        transition: background 0.15s;
+    }
+
+        .scenarios button:hover {
+            background: #3a3a46;
+        }
+
+        .scenarios button:active {
+            background: #5fc4ff;
+            color: #14141a;
+        }
+
+.console code {
+    font-family: monospace;
+    font-size: 12px;
+    color: #5fc4ff;
+    background: #0a0a0e;
+    padding: 2px 6px;
+    border-radius: 3px;
+}
