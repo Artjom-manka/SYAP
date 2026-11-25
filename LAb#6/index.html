@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Шасси танков — CRUD</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="page">
+    <h1>ИНЕРЦИОННЫЕ ТАНКИ · Панель шасси</h1>
+
+    <section class="panel terminal-border">
+        <h2>Новое шасси</h2>
+        <form id="create-form" novalidate>
+            <div class="form-grid">
+                <div class="field">
+                    <label for="f-name">Название</label>
+                    <input id="f-name" name="name" maxlength="30" required>
+                    <span class="error" data-for="name"></span>
+                </div>
+                <div class="field">
+                    <label for="f-thrust">Тяга (0.001 – 1)</label>
+                    <input id="f-thrust" name="thrust" type="number" min="0.001" max="1" step="any" required>
+                    <span class="error" data-for="thrust"></span>
+                </div>
+                <div class="field">
+                    <label for="f-friction">Трение (0.5 – 0.999)</label>
+                    <input id="f-friction" name="friction" type="number" min="0.5" max="0.999" step="any" required>
+                    <span class="error" data-for="friction"></span>
+                </div>
+                <div class="field">
+                    <label for="f-max">Макс. скорость (0.1 – 20)</label>
+                    <input id="f-max" name="maxSpeed" type="number" min="0.1" max="20" step="any" required>
+                    <span class="error" data-for="maxSpeed"></span>
+                </div>
+            </div>
+            <button type="submit">+ Добавить шасси</button>
+        </form>
+    </section>
+
+    <section class="panel terminal-border">
+        <h2>Список шасси</h2>
+        <div class="filter">
+            <label for="filterSpeed">Макс. скорость ≤ <output id="filterVal">20</output></label>
+            <input type="range" id="filterSpeed" min="0" max="20" step="0.5" value="20">
+        </div>
+        <div class="table-wrap">
+            <table id="presets">
+                <thead>
+                    <tr><th>Название</th><th>Тяга</th><th>Трение</th><th>Макс. скорость</th><th>Действия</th></tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+        <div class="counter" id="counter"></div>
+    </section>
+</div>
+<script type="module" src="js/crud.js"></script>
+</body>
+</html>
