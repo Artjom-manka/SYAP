@@ -118,11 +118,8 @@ python -m http.server 8000
 
 ## Скриншоты
 
-| Главная (десктоп) | Мобильная версия |
-|---|---|
-| ![Главная](docs/main.png) | ![Мобильная](docs/mobile.png) |
+<img width="1911" height="922" alt="image" src="https://github.com/user-attachments/assets/b917f30e-e9a0-4394-be3f-abfe58ce18b7" />
 
-![Хотбар и инвентарь](docs/inventory.png)
 
 ## Связь с другими работами
 
