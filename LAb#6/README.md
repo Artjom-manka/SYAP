@@ -82,7 +82,8 @@ python -m http.server 8000
 
 ## Скриншоты
 
-![Панель шасси](docs/crud.png)
+<img width="1915" height="918" alt="image" src="https://github.com/user-attachments/assets/77dbb822-961d-42d8-9e97-0f18c6948999" />
+
 
 ## Типовые вопросы по работе
 
