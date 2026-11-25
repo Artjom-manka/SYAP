@@ -80,7 +80,7 @@ python -m http.server 8000
 7. DevTools → **Application → Local Storage** — ключ `tank_presets` с актуальным JSON после каждой операции.
 8. Перезагрузите страницу — данные на месте.
 
-## Скриншоты
+## Скриншот
 
 <img width="1915" height="918" alt="image" src="https://github.com/user-attachments/assets/77dbb822-961d-42d8-9e97-0f18c6948999" />
 
