@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Инерционные танки</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="site-shell">
+    <header class="site-header">
+        <h1>INERTIAL TANKS</h1>
+        <span class="subtitle">Лабиринт · инерция · дрифт</span>
+        <nav class="top-nav">
+            <a href="index.html" class="active">ГЛАВНАЯ</a>
+            <a href="pages/inventory.html">ИНВЕНТАРЬ</a>
+        </nav>
+        <button class="burger" id="burger" aria-label="Меню">☰</button>
+        <nav class="mobile-menu" id="mobile-menu">
+            <a class="mobile-link" href="index.html">ГЛАВНАЯ</a>
+            <a class="mobile-link" href="pages/inventory.html">ИНВЕНТАРЬ</a>
+        </nav>
+    </header>
+
+    <aside class="sidebar terminal-border">
+        <h2>HUD</h2>
+        <div class="hud-row"><span>Статус</span><b id="hud-status">идёт</b></div>
+        <div class="hud-row"><span>Время</span><b id="hud-time">0.0 с</b></div>
+        <div class="hud-row"><span>Скорость</span><b id="hud-speed">0.00</b></div>
+        <div class="meter"><div id="meter-fill" class="meter-fill calm"></div></div>
+        <div id="hud-label" class="hud-label">СТОИТ</div>
+        <div class="hud-row secondary"><span>Позиция</span><b id="hud-pos">0, 0</b></div>
+        <div class="hud-row secondary"><span>Угол</span><b id="hud-angle">0°</b></div>
+        <div class="hud-row secondary"><span>Шасси</span><b id="hud-preset">стандарт</b></div>
+        <p class="hints">W/S — газ · A/D — поворот · R — рестарт</p>
+    </aside>
+
+    <main class="game-area terminal-border">
+        <canvas id="game" width="640" height="600"></canvas>
+        <div class="touchpad" aria-label="Сенсорное управление">
+            <button class="touch-btn" data-key="a">◀</button>
+            <button class="touch-btn" data-key="w">▲</button>
+            <button class="touch-btn" data-key="s">▼</button>
+            <button class="touch-btn" data-key="d">▶</button>
+        </div>
+    </main>
+
+    <section class="hotbar" id="hotbar"></section>
+
+    <footer class="site-footer"> Вариант 14 · Инерционные танки</footer>
+</div>
+<script type="module" src="js/site.js"></script>
+</body>
+</html>
